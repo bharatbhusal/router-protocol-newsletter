@@ -10,7 +10,15 @@ require("dotenv").config({
 });
 
 const app = express();
-app.use(cors());
+
+const corsOptions = {
+	origin: "*",
+	methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+	preflightContinue: false,
+	optionsSuccessStatus: 204,
+};
+
+app.use(cors(corsOptions));
 
 // Use body-parser to parse JSON bodies
 app.use(bodyParser.urlencoded({ extended: false }));
