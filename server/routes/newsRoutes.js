@@ -5,6 +5,7 @@ const {
 } = require("../middlewares/auth");
 const router = express.Router();
 
+router.get("/", newsController.getAllNews);
 // Create news
 router.post(
 	"/",
@@ -21,7 +22,10 @@ router.post(
 router.get("/:year/:month", newsController.getNewsOfMonth);
 router.get("/:id", newsController.getNewsById);
 // Get news
-router.get("/:year/:month/:day", newsController.getNews);
+router.get(
+	"/:year/:month/:day",
+	newsController.getNewsByDay
+);
 
 // Get news of whole month
 

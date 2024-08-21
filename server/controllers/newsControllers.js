@@ -1,6 +1,6 @@
 const News = require("../models/newsModel");
 
-exports.getNews = async (req, res) => {
+exports.getNewsByDay = async (req, res) => {
 	try {
 		const { year, month, day } = req.params;
 		const news = await News.find();
@@ -13,6 +13,19 @@ exports.getNews = async (req, res) => {
 		});
 		console.log("Returned news =====> ", filteredNews);
 		res.status(200).json(filteredNews);
+	} catch (error) {
+		res.status(500).json({
+			error: "Internal server error",
+			message: error.message,
+		});
+	}
+};
+
+exports.getAllNews = async (req, res) => {
+	try {
+		const news = await News.find();
+		console.log("Returned news =====> ", news);
+		res.status(200).json(news);
 	} catch (error) {
 		res.status(500).json({
 			error: "Internal server error",
@@ -79,7 +92,7 @@ exports.getNewsOfMonth = async (req, res) => {
 		});
 
 		console.log("Returned news =====> ", filteredNews);
-		res.status(200).json(filteredNews);
+		res.status(200).json(filteredNews.reverse());
 	} catch (error) {
 		res.status(500).json({
 			error: "Internal server error",
