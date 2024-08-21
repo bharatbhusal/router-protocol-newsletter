@@ -16,6 +16,11 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+//health check
+app.get("/health", (req, res) => {
+	res.send("Server is running");
+});
+
 // Define your routes
 app.use("/news", newsRoutes);
 app.use("/users", userRoutes);
