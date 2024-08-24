@@ -3,8 +3,8 @@ const urlsToCache = [
 	"/",
 	"/index.html",
 	"/favicon.svg",
-	"/static/js/main.75d05c73.js",
-	"/static/css/main.c8219a4f.css",
+	"/static/js/main.1d7b5368.js",
+	"/static/css/main.f60926d0.css",
 	"/manifest.json",
 ];
 
