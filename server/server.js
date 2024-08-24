@@ -1,25 +1,23 @@
 const express = require("express");
-const cors = require("cors");
 const newsRoutes = require("./routes/newsRoutes");
 const userRoutes = require("./routes/userRoutes");
 const authRoutes = require("./routes/authRoutes");
 const { connectDB } = require("./config/db");
 const bodyParser = require("body-parser");
+const cors = require("cors");
+
 require("dotenv").config({
 	path: `.env.${process.env.NODE_ENV}`,
 });
 
 const app = express();
 
-const corsOptions = {
-	origin: "*",
-	methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-	preflightContinue: false,
-	optionsSuccessStatus: 204,
-};
-
-app.use(cors(corsOptions));
-
+app.use(
+	cors({
+		origin: ["https://router-protocol-newsletter.vercel.app"],
+		credentials: true,
+	})
+);
 // Use body-parser to parse JSON bodies
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
