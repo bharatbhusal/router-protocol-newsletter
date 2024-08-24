@@ -7,11 +7,6 @@ import {
 	RouterProvider,
 } from "react-router-dom";
 import App from "./App";
-// import {
-// 	LogIn,
-// 	SignUp,
-// 	ForgotPassword,
-// } from "./components/auth/Auth";
 import LogIn from "./components/auth/LogIn";
 import SignUp from "./components/auth/SignUp";
 import ForgotPassword from "./components/auth/ForgotPassword";
@@ -44,7 +39,6 @@ const router = createBrowserRouter([
 			{ path: "/login", element: <LogIn /> },
 			{ path: "/add-news", element: <AddNews /> },
 			{ path: "/signup", element: <SignUp /> },
-			// userMenu
 			{ path: "/profile", element: <UserProfile /> },
 
 			{ path: "/reset", element: <ForgotPassword /> },
@@ -64,4 +58,4 @@ root.render(
 );
 
 // Register the service worker
-// register();
+register();
