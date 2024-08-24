@@ -19,8 +19,10 @@ const UserProvider = ({ children }) => {
 	useEffect(() => {
 		const getUser = async () => {
 			try {
-				const response = await getUserById(user.id);
-				setUser(response);
+				if (user) {
+					const response = await getUserById(user.id);
+					setUser(response);
+				}
 			} catch (error) {
 				console.error("Failed to fetch user:", error.message);
 			}
