@@ -3,7 +3,11 @@ require("dotenv").config();
 
 exports.connectDB = () => {
 	mongoose
-		.connect(process.env.MONGO_URL)
+		.connect(process.env.MONGO_URL, {
+			useNewUrlParser: true,
+			useUnifiedTopology: true,
+			serverSelectionTimeoutMS: 30000,
+		})
 		.then(() => {
 			console.log("Connected to MongoDB");
 		})
