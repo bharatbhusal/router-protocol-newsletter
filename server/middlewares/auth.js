@@ -2,13 +2,13 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/userModel");
 
 const generateToken = (userId, email) => {
-	const secretKey = process.env.JWT_SECRET_KEY;
+	const secretKey = process.env.JWT_KEY;
 	const dataToSign = `${userId}_${email}`;
 	const token = jwt.sign({ dataToSign }, secretKey);
 	return token;
 };
 const verifyToken = (token) => {
-	const secretKey = process.env.JWT_SECRET_KEY;
+	const secretKey = process.env.JWT_KEY;
 	try {
 		const decoded = jwt.verify(token, secretKey);
 		const dataToSign = decoded.dataToSign;
